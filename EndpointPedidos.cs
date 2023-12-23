@@ -56,7 +56,7 @@ public static class EndpointPedidos
                                                        join pr in context.Produtos on ip.product_id equals pr.product_id
                                                        join c in context.Categorias on pr.category_id equals c.category_id
                                                        group new { pr, ip, c } by new { pr.product_name, c.category_name } into g
-                                                       orderby g.Sum(p => p.ip.quantity * p.pr.price) descending
+                                                       orderby g.Sum(p => p.pr.price) descending
                                                        select new
                                                        {
                                                            nome = g.Key.product_name,
